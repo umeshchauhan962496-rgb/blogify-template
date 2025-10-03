@@ -11,7 +11,7 @@ const Sidebar = () => {
     const tabs = [
         {
             id: "profile",
-            url: "/account/profile",
+            url: "/profile",
             name: "My Profile",
             icon: UserCircleIcon,
         },

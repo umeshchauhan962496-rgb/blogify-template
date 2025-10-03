@@ -8,49 +8,8 @@ import { apiUrl, token } from "../common/Config";
 import toast from "react-hot-toast";
 
 const Profile = () => {
-    const {
-        register,
-        handleSubmit,
-        watch,
-        reset,
-        formState: { errors },
-    } = useForm({
-        defaultValues: async () => {
-            try {
-                const response = await axios.get(apiUrl + "/users/fetch", {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
-
-                if (response.data.success) {
-                    const { name, location, email, bio } = response.data.data;
-                    console.log(name);
-                    reset({
-                        name,
-                        email,
-                        location,
-                        bio,
-                    });
-                }
-            } catch (error) {}
-        },
-    });
-
-    const onSubmit = async (data) => {
-        try {
-            const response = await axios.post(apiUrl + "/users/update", data, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-
-            if (response.data.success) {
-                toast.success(response?.data?.message);
-            }
-        } catch (error) {}
-    };
-
+   
+    
     return (
         <Layout>
             <div className="py-8">
@@ -80,11 +39,7 @@ const Profile = () => {
                                             </div>
                                         </div>
                                         <div className="md:w-2/3 space-y-4">
-                                            <form
-                                                onSubmit={handleSubmit(
-                                                    onSubmit
-                                                )}
-                                            >
+                                            <form>
                                                 <div>
                                                     <label
                                                         htmlFor="fullName"
@@ -93,14 +48,12 @@ const Profile = () => {
                                                         Full Name
                                                     </label>
                                                     <input
-                                                        {...register("name")}
                                                         id="fullName"
                                                         name="fullName"
                                                         type="text"
                                                         className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400
                                                     focus:outline-none focus:border-primary-color focus:ring-1 focus:ring-primary-color"
                                                         placeholder="Enter your full name"
-                                                        required
                                                     />
                                                 </div>
                                                 <div>
@@ -111,7 +64,6 @@ const Profile = () => {
                                                         Email Address
                                                     </label>
                                                     <input
-                                                        {...register("email")}
                                                         id="email"
                                                         name="email"
                                                         type="email"
@@ -119,12 +71,9 @@ const Profile = () => {
                                                     focus:outline-none focus:border-primary-color focus:ring-1 focus:ring-primary-color
                                                     disabled:bg-gray-50 disabled:text-gray-500"
                                                         placeholder="you@example.com"
-                                                        disabled
+                                                        
                                                     />
-                                                    <p className="mt-1 text-xs text-gray-500">
-                                                        Email address cannot be
-                                                        changed
-                                                    </p>
+                                                    
                                                 </div>
                                                 <div>
                                                     <label
@@ -134,7 +83,6 @@ const Profile = () => {
                                                         Bio
                                                     </label>
                                                     <textarea
-                                                        {...register("bio")}
                                                         id="bio"
                                                         name="bio"
                                                         rows={3}
@@ -155,9 +103,7 @@ const Profile = () => {
                                                         Location
                                                     </label>
                                                     <input
-                                                        {...register(
-                                                            "location"
-                                                        )}
+                                                        
                                                         id="location"
                                                         name="location"
                                                         type="text"

@@ -14,7 +14,7 @@ const Header = () => {
             <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-sm shadow-sm font-dm-sans">
                 <div className="container max-w-[1440px] mx-auto flex items-center justify-between px-4 py-4">
                     <Link to="/" className="text-xl font-bold ">
-                        Smart Blogs
+                        Blogify
                     </Link>
 
                     <nav className="hidden md:flex space-x-6">
@@ -128,7 +128,7 @@ const Header = () => {
                             className="text-xl font-bold"
                             onClick={toggleMobileMenu}
                         >
-                            Smart Blogs
+                            Blogify
                         </Link>
                         <button
                             className="p-2 text-gray-700 focus:outline-none"
@@ -194,34 +194,23 @@ const Header = () => {
                             Entertainment
                         </NavLink>
                     </nav>
-                    {!token && (
-                        <div className="mt-8 space-y-4">
-                            <Link
-                                to="/login"
-                                className="block w-full px-4 py-2 text-center border border-primary-color text-primary-color rounded-md hover:bg-primary-color hover:text-white transition"
-                                onClick={toggleMobileMenu}
-                            >
-                                Login
-                            </Link>
-
-                            <Link
-                                to="/register"
-                                className="block w-full px-4 py-2 text-center bg-primary-color hover:bg-secondary-color text-white rounded-md transition"
-                                onClick={toggleMobileMenu}
-                            >
-                                Register
-                            </Link>
-                        </div>
-                    )}
-                    {token && (
+                    <div className="mt-8 space-y-4">
                         <Link
-                            to="/profile"
-                            className="block mt-3 w-full px-4 py-2 text-center bg-primary-color hover:bg-secondary-color text-white rounded-md transition"
+                            to="/login"
+                            className="block w-full px-4 py-2 text-center border border-primary-color text-primary-color rounded-md hover:bg-primary-color hover:text-white transition"
                             onClick={toggleMobileMenu}
                         >
-                            My Account
+                            Login
                         </Link>
-                    )}
+
+                        <Link
+                            to="/register"
+                            className="block w-full px-4 py-2 text-center bg-primary-color hover:bg-secondary-color text-white rounded-md transition"
+                            onClick={toggleMobileMenu}
+                        >
+                            Register
+                        </Link>
+                    </div>
                 </div>
             </div>
         </>
