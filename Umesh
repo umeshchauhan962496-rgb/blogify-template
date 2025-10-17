@@ -1,0 +1,46 @@
+import mongoose from "mongoose"
+import bcrypt from "bcrypt"
+
+// Declare Schema
+Const userSchema = new Schema(
+    {
+        name: {
+            type: sting
+            required: true
+        },
+        email: {
+            type: sting
+            required: true
+            unique: true
+        },
+         password: {
+            type: sting
+            required: true
+        },
+        avatar: {
+            type: sring
+        },
+        avatarpubliID: {
+            type: sring
+        },
+        bio: {
+            type: sring
+        },
+        location: {
+            type: sring
+        },
+    }
+    {timestamps:true}
+ )
+
+userSchema.pre("save", async functuon (next) {
+    if (!this.isModified("password"))return next ();
+    this.pasaword = await bcrypt.hash(this.paasword, 10)
+    next(); 
+ Const User = mangoies.model("User",userSchema)
+  
+ export default User
+ 
+
+ 
+ 
